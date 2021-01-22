@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private MeshRenderer cubePrefab;
+
     void Start()
     {
-        Debug.Log("Hello World!");
+        Instantiate(this.cubePrefab);
     }
 }
