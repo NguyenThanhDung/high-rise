@@ -342,3 +342,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubePrefab: {fileID: 8530404412149091727, guid: 585da67e608e46c4b87b8cc674bc2427, type: 3}
+  material: {fileID: 2100000, guid: 6e3dc4c99f04ee24383eafface820bc8, type: 2}
