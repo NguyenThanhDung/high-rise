@@ -292,7 +292,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.32998028, y: -0.14741205, z: 0.052251462, w: 0.9309417}
-  m_LocalPosition: {x: 1.44, y: 4.46, z: -4.17}
+  m_LocalPosition: {x: 2.42, y: 4.46, z: -4.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -342,4 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubePrefab: {fileID: 8530404412149091727, guid: 585da67e608e46c4b87b8cc674bc2427, type: 3}
-  material: {fileID: 2100000, guid: 6e3dc4c99f04ee24383eafface820bc8, type: 2}
+  materials:
+  - {fileID: 2100000, guid: 5e26080e9b83b4c478137362fc75db50, type: 2}
+  - {fileID: 2100000, guid: 6e3dc4c99f04ee24383eafface820bc8, type: 2}
+  - {fileID: 2100000, guid: 6bc9ad5fffdab6a41abee78676db36b6, type: 2}
