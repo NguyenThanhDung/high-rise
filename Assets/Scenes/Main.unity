@@ -341,6 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65b111ad44b874a4381c621dcbd30931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  placeholderPrefab: {fileID: 5218786877445596854, guid: 87192ed17251bae48a24579a25cda81c, type: 3}
   cubePrefab: {fileID: 8530404412149091727, guid: 585da67e608e46c4b87b8cc674bc2427, type: 3}
   materials:
   - {fileID: 2100000, guid: 5e26080e9b83b4c478137362fc75db50, type: 2}

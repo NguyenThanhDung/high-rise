@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private GameObject placeholderPrefab;
     [SerializeField] private MeshRenderer cubePrefab;
     [SerializeField] private Material[] materials;
     [SerializeField] private int boardSize;
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        SpawnPlaceholders();
         InitializeEmptyLocation();
         for(int i = 0; i < materials.Length; i++)
         {
@@ -19,6 +21,17 @@ public class GameManager : MonoBehaviour
             var cube = Instantiate(this.cubePrefab, new Vector3(location.x, 0, location.y), Quaternion.identity);
             var meshRenderer = cube.GetComponent<MeshRenderer>();
             meshRenderer.material = this.materials[i];
+        }
+    }
+
+    private void SpawnPlaceholders()
+    {
+        for(int i = 0; i < this.boardSize; i++)
+        {
+            for(int j = 0; j < this.boardSize; j++)
+            {
+                Instantiate(this.placeholderPrefab, new Vector3(i, -0.5f, j), Quaternion.Euler(90, 0, 0));
+            }
         }
     }
 
