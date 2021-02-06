@@ -1,3 +1,3 @@
 # high-rise
-  * This is under construction
-  * Please patient
+* This is under construction
+* Please patient
