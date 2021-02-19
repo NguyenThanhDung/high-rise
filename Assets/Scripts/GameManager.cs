@@ -24,6 +24,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if(Physics.Raycast (ray, out hit))
+            {
+                if(hit.collider.CompareTag("Placeholder"))
+                {
+                    SpawnCubeAt(hit.transform.position);
+                }
+            }
+        }
+    }
+
     private void SpawnPlaceholders()
     {
         for(int i = 0; i < this.boardSize; i++)
@@ -54,5 +70,13 @@ public class GameManager : MonoBehaviour
         var location = this.emptyLocations[index];
         this.emptyLocations.RemoveAt(index);
         return location;
+    }
+
+    private void SpawnCubeAt(Vector3 position)
+    {
+        var cube = Instantiate(this.cubePrefab, position + Vector3.up * 0.5f, Quaternion.identity);
+        var meshRenderer = cube.GetComponent<MeshRenderer>();
+        int index = Random.Range(0, this.materials.Length);
+        meshRenderer.material = this.materials[index];
     }
 }
