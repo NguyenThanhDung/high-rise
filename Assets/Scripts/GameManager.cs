@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public const int MAX_CUBES_QUEUE_SIZE = 3;
+
     [SerializeField] private GameObject placeholderPrefab;
     [SerializeField] private MeshRenderer cubePrefab;
     [SerializeField] private Material[] materials;
     [SerializeField] private int boardSize;
 
     private List<Vector2> emptyLocations;
+
+    public Color[] CubesQueue { get; private set; }
 
     private void Start()
     {
@@ -22,6 +26,7 @@ public class GameManager : MonoBehaviour
             var meshRenderer = cube.GetComponent<MeshRenderer>();
             meshRenderer.material = this.materials[i];
         }
+        InitializeCubesQueue();
     }
 
     private void Update()
@@ -70,6 +75,17 @@ public class GameManager : MonoBehaviour
         var location = this.emptyLocations[index];
         this.emptyLocations.RemoveAt(index);
         return location;
+    }
+
+    private void InitializeCubesQueue()
+    {
+        this.CubesQueue = new Color[MAX_CUBES_QUEUE_SIZE];
+        for(int i = 0; i < MAX_CUBES_QUEUE_SIZE; i++)
+        {
+            int colorIndex = Random.Range(0, MAX_CUBES_QUEUE_SIZE);
+            Color color = (colorIndex == 0) ? Color.red : ((colorIndex == 1) ? Color.green : Color.blue);
+            this.CubesQueue[i] = color;
+        }
     }
 
     private void SpawnCubeAt(Vector3 position)
