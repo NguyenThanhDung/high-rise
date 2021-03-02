@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
             {
                 if(hit.collider.CompareTag("Placeholder"))
                 {
-                    SpawnCubeAt(hit.transform.position);
+                    OnClickPlaceholder(hit.transform.position);
                 }
             }
         }
@@ -88,9 +88,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void SpawnCubeAt(Vector3 position)
+    private void OnClickPlaceholder(Vector3 placeholderPosition)
     {
-        var cube = Instantiate(this.cubePrefab, position + Vector3.up * 0.5f, Quaternion.identity);
+        var cube = Instantiate(this.cubePrefab, placeholderPosition + Vector3.up * 0.5f, Quaternion.identity);
         var meshRenderer = cube.GetComponent<MeshRenderer>();
         int index = Random.Range(0, this.materials.Length);
         meshRenderer.material = this.materials[index];
