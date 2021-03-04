@@ -82,15 +82,27 @@ public class GameManager : MonoBehaviour
         this.CubesQueue = new Queue<Color>();
         for(int i = 0; i < MAX_CUBES_QUEUE_SIZE; i++)
         {
-            int colorIndex = Random.Range(0, MAX_CUBES_QUEUE_SIZE);
-            Color color = (colorIndex == 0) ? Color.red : ((colorIndex == 1) ? Color.green : Color.blue);
-            this.CubesQueue.Enqueue(color);
+            AddCubeToQueue();
         }
     }
 
     private void OnClickPlaceholder(Vector3 placeholderPosition)
     {
-        var cube = Instantiate(this.cubePrefab, placeholderPosition + Vector3.up * 0.5f, Quaternion.identity);
+        Color nextCube = this.CubesQueue.Dequeue();
+        AddCubeToQueue();
+        PlaceCubeAt(placeholderPosition);
+    }
+
+    private void AddCubeToQueue()
+    {
+        int colorIndex = Random.Range(0, MAX_CUBES_QUEUE_SIZE);
+        Color color = this.materials[colorIndex].color;
+        this.CubesQueue.Enqueue(color);
+    }
+
+    private void PlaceCubeAt(Vector3 position)
+    {
+        var cube = Instantiate(this.cubePrefab, position + Vector3.up * 0.5f, Quaternion.identity);
         var meshRenderer = cube.GetComponent<MeshRenderer>();
         int index = Random.Range(0, this.materials.Length);
         meshRenderer.material = this.materials[index];
