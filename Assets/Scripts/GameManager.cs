@@ -13,8 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int boardSize;
 
     private List<Vector2> emptyLocations;
-
-    public Queue<Color> CubesQueue { get; private set; }
+    private Queue<Color> cubesQueue;
 
     public Action<Queue<Color>> OnUpdateCubesQueue;
 
@@ -30,7 +29,7 @@ public class GameManager : MonoBehaviour
             meshRenderer.material = this.materials[i];
         }
         InitializeCubesQueue();
-        OnUpdateCubesQueue(this.CubesQueue);
+        OnUpdateCubesQueue(this.cubesQueue);
     }
 
     private void Update()
@@ -83,7 +82,7 @@ public class GameManager : MonoBehaviour
 
     private void InitializeCubesQueue()
     {
-        this.CubesQueue = new Queue<Color>();
+        this.cubesQueue = new Queue<Color>();
         for(int i = 0; i < MAX_CUBES_QUEUE_SIZE; i++)
         {
             AddCubeToQueue();
@@ -92,17 +91,17 @@ public class GameManager : MonoBehaviour
 
     private void OnClickPlaceholder(Vector3 placeholderPosition)
     {
-        Color nextCube = this.CubesQueue.Dequeue();
+        Color nextCube = this.cubesQueue.Dequeue();
         AddCubeToQueue();
         PlaceCubeAt(placeholderPosition);
-        OnUpdateCubesQueue(this.CubesQueue);
+        OnUpdateCubesQueue(this.cubesQueue);
     }
 
     private void AddCubeToQueue()
     {
         int colorIndex = UnityEngine.Random.Range(0, MAX_CUBES_QUEUE_SIZE);
         Color color = this.materials[colorIndex].color;
-        this.CubesQueue.Enqueue(color);
+        this.cubesQueue.Enqueue(color);
     }
 
     private void PlaceCubeAt(Vector3 position)
