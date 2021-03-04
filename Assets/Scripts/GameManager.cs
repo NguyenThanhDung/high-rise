@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     private List<Vector2> emptyLocations;
 
-    public Color[] CubesQueue { get; private set; }
+    public Queue<Color> CubesQueue { get; private set; }
 
     private void Start()
     {
@@ -79,12 +79,12 @@ public class GameManager : MonoBehaviour
 
     private void InitializeCubesQueue()
     {
-        this.CubesQueue = new Color[MAX_CUBES_QUEUE_SIZE];
+        this.CubesQueue = new Queue<Color>();
         for(int i = 0; i < MAX_CUBES_QUEUE_SIZE; i++)
         {
             int colorIndex = Random.Range(0, MAX_CUBES_QUEUE_SIZE);
             Color color = (colorIndex == 0) ? Color.red : ((colorIndex == 1) ? Color.green : Color.blue);
-            this.CubesQueue[i] = color;
+            this.CubesQueue.Enqueue(color);
         }
     }
 

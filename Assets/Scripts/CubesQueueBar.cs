@@ -23,7 +23,7 @@ public class CubesQueueBar : MonoBehaviour
             var queuedCubeRect = queuedCube.GetComponent<RectTransform>();
             queuedCubeRect.anchoredPosition = new Vector2(120 * i, 20);
             var image = queuedCube.GetComponent<Image>();
-            image.color = gameManager.CubesQueue[i];
+            image.color = gameManager.CubesQueue.Peek();
         }
     }
 }
