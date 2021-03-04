@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
             meshRenderer.material = this.materials[i];
         }
         InitializeCubesQueue();
+        OnUpdateCubesQueue(this.CubesQueue);
     }
 
     private void Update()
