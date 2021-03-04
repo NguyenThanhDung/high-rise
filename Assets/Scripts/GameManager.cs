@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ public class GameManager : MonoBehaviour
     private List<Vector2> emptyLocations;
 
     public Queue<Color> CubesQueue { get; private set; }
+
+    public Action<Queue<Color>> OnUpdateCubesQueue;
 
     private void Start()
     {
@@ -71,7 +74,7 @@ public class GameManager : MonoBehaviour
 
     private Vector2 PopRandomLocation()
     {
-        int index = Random.Range(0, this.emptyLocations.Count);
+        int index = UnityEngine.Random.Range(0, this.emptyLocations.Count);
         var location = this.emptyLocations[index];
         this.emptyLocations.RemoveAt(index);
         return location;
@@ -91,11 +94,12 @@ public class GameManager : MonoBehaviour
         Color nextCube = this.CubesQueue.Dequeue();
         AddCubeToQueue();
         PlaceCubeAt(placeholderPosition);
+        OnUpdateCubesQueue(this.CubesQueue);
     }
 
     private void AddCubeToQueue()
     {
-        int colorIndex = Random.Range(0, MAX_CUBES_QUEUE_SIZE);
+        int colorIndex = UnityEngine.Random.Range(0, MAX_CUBES_QUEUE_SIZE);
         Color color = this.materials[colorIndex].color;
         this.CubesQueue.Enqueue(color);
     }
@@ -104,7 +108,7 @@ public class GameManager : MonoBehaviour
     {
         var cube = Instantiate(this.cubePrefab, position + Vector3.up * 0.5f, Quaternion.identity);
         var meshRenderer = cube.GetComponent<MeshRenderer>();
-        int index = Random.Range(0, this.materials.Length);
+        int index = UnityEngine.Random.Range(0, this.materials.Length);
         meshRenderer.material = this.materials[index];
     }
 }

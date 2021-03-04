@@ -7,23 +7,27 @@ public class CubesQueueBar : MonoBehaviour
 {
     [SerializeField] GameManager gameManager;
     [SerializeField] GameObject queuedCubePrefab;
-    
-    void Start()
+
+    void Awake()
     {
-        StartCoroutine(ShowCubesQueue());
+        gameManager.OnUpdateCubesQueue += OnUpdateCubesQueue;
     }
 
-    private IEnumerator ShowCubesQueue()
+    void OnDestroy()
     {
-        while(this.gameManager.CubesQueue == null)
-            yield return null;
-        for(int i=0; i<GameManager.MAX_CUBES_QUEUE_SIZE; i++)
+        gameManager.OnUpdateCubesQueue -= OnUpdateCubesQueue;
+    }
+
+    private void OnUpdateCubesQueue(Queue<Color> cubesQueue)
+    {
+        int i = 0;
+        foreach(Color cubeColor in cubesQueue)
         {
             var queuedCube = Instantiate(this.queuedCubePrefab, this.transform);
             var queuedCubeRect = queuedCube.GetComponent<RectTransform>();
-            queuedCubeRect.anchoredPosition = new Vector2(120 * i, 20);
+            queuedCubeRect.anchoredPosition = new Vector2(120 * i++, 20);
             var image = queuedCube.GetComponent<Image>();
-            image.color = gameManager.CubesQueue.Peek();
+            image.color = cubeColor;
         }
     }
 }
