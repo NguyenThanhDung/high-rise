@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject placeholderPrefab;
     [SerializeField] private MeshRenderer cubePrefab;
-    [SerializeField] private Material[] materials;
+    [SerializeField] private Color[] colors;
     [SerializeField] private int boardSize;
 
     private List<Vector2> emptyLocations;
@@ -21,12 +21,12 @@ public class GameManager : MonoBehaviour
     {
         SpawnPlaceholders();
         InitializeEmptyLocation();
-        for(int i = 0; i < materials.Length; i++)
+        for(int i = 0; i < this.colors.Length; i++)
         {
             var location = PopRandomLocation();
             var cube = Instantiate(this.cubePrefab, new Vector3(location.x, 0, location.y), Quaternion.identity);
             var meshRenderer = cube.GetComponent<MeshRenderer>();
-            meshRenderer.material = this.materials[i];
+            meshRenderer.material.color = this.colors[i];
         }
         InitializeCubesQueue();
         OnUpdateCubesQueue(this.cubesQueue);
@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
     private void AddCubeToQueue()
     {
         int colorIndex = UnityEngine.Random.Range(0, MAX_CUBES_QUEUE_SIZE);
-        Color color = this.materials[colorIndex].color;
+        Color color = this.colors[colorIndex];
         this.cubesQueue.Enqueue(color);
     }
 

@@ -459,10 +459,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placeholderPrefab: {fileID: 5218786877445596854, guid: 87192ed17251bae48a24579a25cda81c, type: 3}
   cubePrefab: {fileID: 8530404412149091727, guid: 585da67e608e46c4b87b8cc674bc2427, type: 3}
-  materials:
-  - {fileID: 2100000, guid: 5e26080e9b83b4c478137362fc75db50, type: 2}
-  - {fileID: 2100000, guid: 6e3dc4c99f04ee24383eafface820bc8, type: 2}
-  - {fileID: 2100000, guid: 6bc9ad5fffdab6a41abee78676db36b6, type: 2}
+  colors:
+  - {r: 0.28235295, g: 0.44313726, b: 0.98039216, a: 1}
+  - {r: 0.19607843, g: 0.85882354, b: 0.16470589, a: 1}
+  - {r: 0.85882354, g: 0.16470589, b: 0.16470589, a: 1}
   boardSize: 5
 --- !u!1 &1112399008
 GameObject:
