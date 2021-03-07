@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
     {
         Color nextCube = this.cubesQueue.Dequeue();
         AddCubeToQueue();
-        PlaceCubeAt(placeholderPosition);
+        PlaceCube(nextCube, placeholderPosition);
         OnUpdateCubesQueue(this.cubesQueue);
     }
 
@@ -104,11 +104,10 @@ public class GameManager : MonoBehaviour
         this.cubesQueue.Enqueue(color);
     }
 
-    private void PlaceCubeAt(Vector3 position)
+    private void PlaceCube(Color cubeColor, Vector3 position)
     {
         var cube = Instantiate(this.cubePrefab, position + Vector3.up * 0.5f, Quaternion.identity);
         var meshRenderer = cube.GetComponent<MeshRenderer>();
-        int index = UnityEngine.Random.Range(0, this.materials.Length);
-        meshRenderer.material = this.materials[index];
+        meshRenderer.material.color = cubeColor;
     }
 }
