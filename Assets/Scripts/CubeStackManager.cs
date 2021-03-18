@@ -29,8 +29,7 @@ public class CubeStackManager : MonoBehaviour
         {
             var location = PopRandomLocation(emptyLocations);
             var cube = Instantiate(this.cubePrefab, new Vector3(location.x, 0, location.y), Quaternion.identity, this.transform);
-            var meshRenderer = cube.GetComponent<MeshRenderer>();
-            meshRenderer.material.color = this.gameManager.colors[i];
+            cube.material.color = this.gameManager.colors[i];
         }
     }
 
@@ -59,7 +58,6 @@ public class CubeStackManager : MonoBehaviour
     private void PlaceCube(Color cubeColor, Vector3 position)
     {
         var cube = Instantiate(this.cubePrefab, position + Vector3.up * 0.5f, Quaternion.identity, this.transform);
-        var meshRenderer = cube.GetComponent<MeshRenderer>();
-        meshRenderer.material.color = cubeColor;
+        cube.material.color = cubeColor;
     }
 }

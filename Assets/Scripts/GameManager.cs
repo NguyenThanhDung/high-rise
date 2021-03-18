@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     public Color[] colors;
 
     [SerializeField] private GameObject placeholderPrefab;
-    [SerializeField] private MeshRenderer cubePrefab;
 
     private Queue<Color> cubesQueue;
 
