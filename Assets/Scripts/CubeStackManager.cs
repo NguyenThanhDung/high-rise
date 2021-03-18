@@ -7,9 +7,19 @@ public class CubeStackManager : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private MeshRenderer cubePrefab;
 
+    private void Awake()
+    {
+        this.gameManager.OnPlaceCube += PlaceCube;
+    }
+
     private void Start()
     {
         SpawnFirstCubes();
+    }
+
+    void OnDestroy()
+    {
+        this.gameManager.OnPlaceCube -= PlaceCube;
     }
 
     private void SpawnFirstCubes()
@@ -44,5 +54,12 @@ public class CubeStackManager : MonoBehaviour
         var location = emptyLocations[index];
         emptyLocations.RemoveAt(index);
         return location;
+    }
+
+    private void PlaceCube(Color cubeColor, Vector3 position)
+    {
+        var cube = Instantiate(this.cubePrefab, position + Vector3.up * 0.5f, Quaternion.identity, this.transform);
+        var meshRenderer = cube.GetComponent<MeshRenderer>();
+        meshRenderer.material.color = cubeColor;
     }
 }
