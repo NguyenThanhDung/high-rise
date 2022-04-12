@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
     public const int MAX_CUBES_QUEUE_SIZE = 3;
 
     public int boardSize;
@@ -17,6 +19,11 @@ public class GameManager : MonoBehaviour
     public Action<Color, Vector3> OnPlaceCube;
     public Action<Queue<Color>> OnUpdateCubesQueue;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
         SpawnPlaceholders();
@@ -24,27 +31,11 @@ public class GameManager : MonoBehaviour
         OnUpdateCubesQueue(this.cubesQueue);
     }
 
-    private void Update()
-    {
-        if (Input.GetMouseButtonUp(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if(Physics.Raycast (ray, out hit))
-            {
-                if(hit.collider.CompareTag("Placeholder"))
-                {
-                    OnClickPlaceholder(hit.transform.position);
-                }
-            }
-        }
-    }
-
     private void SpawnPlaceholders()
     {
-        for(int i = 0; i < this.boardSize; i++)
+        for (int i = 0; i < this.boardSize; i++)
         {
-            for(int j = 0; j < this.boardSize; j++)
+            for (int j = 0; j < this.boardSize; j++)
             {
                 Instantiate(this.placeholderPrefab, new Vector3(i, -0.5f, j), Quaternion.Euler(90, 0, 0));
             }
@@ -54,13 +45,13 @@ public class GameManager : MonoBehaviour
     private void InitializeCubesQueue()
     {
         this.cubesQueue = new Queue<Color>();
-        for(int i = 0; i < MAX_CUBES_QUEUE_SIZE; i++)
+        for (int i = 0; i < MAX_CUBES_QUEUE_SIZE; i++)
         {
             AddCubeToQueue();
         }
     }
 
-    private void OnClickPlaceholder(Vector3 placeholderPosition)
+    public void OnClickPlaceholder(Vector3 placeholderPosition)
     {
         Color nextCube = this.cubesQueue.Dequeue();
         AddCubeToQueue();
