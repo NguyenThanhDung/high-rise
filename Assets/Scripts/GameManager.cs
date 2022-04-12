@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public int boardSize;
     public Color[] colors;
 
-    [SerializeField] private GameObject placeholderPrefab;
 
     private Queue<Color> cubesQueue;
 
@@ -26,20 +25,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        SpawnPlaceholders();
         InitializeCubesQueue();
         OnUpdateCubesQueue(this.cubesQueue);
-    }
-
-    private void SpawnPlaceholders()
-    {
-        for (int i = 0; i < this.boardSize; i++)
-        {
-            for (int j = 0; j < this.boardSize; j++)
-            {
-                Instantiate(this.placeholderPrefab, new Vector3(i, -0.5f, j), Quaternion.Euler(90, 0, 0));
-            }
-        }
     }
 
     private void InitializeCubesQueue()
