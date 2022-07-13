@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameEvents : MonoBehaviour
 {
-    public static Action<Vector3> OnPlacingCube;
+    public static Action<Vector3> OnClickingPlaceholder;
 
     private void Update()
     {
@@ -17,7 +17,7 @@ public class GameEvents : MonoBehaviour
             {
                 if(hit.collider.CompareTag("Placeholder"))
                 {
-                    OnPlacingCube(hit.transform.position);
+                    OnClickingPlaceholder(hit.transform.position);
                 }
             }
         }

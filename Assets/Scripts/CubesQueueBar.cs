@@ -5,17 +5,16 @@ using UnityEngine.UI;
 
 public class CubesQueueBar : MonoBehaviour
 {
-    [SerializeField] GameManager gameManager;
     [SerializeField] GameObject queuedCubePrefab;
 
     void Awake()
     {
-        gameManager.OnUpdateCubesQueue += OnUpdateCubesQueue;
+        Predictor.OnUpdateCubesQueue += OnUpdateCubesQueue;
     }
 
     void OnDestroy()
     {
-        gameManager.OnUpdateCubesQueue -= OnUpdateCubesQueue;
+        Predictor.OnUpdateCubesQueue -= OnUpdateCubesQueue;
     }
 
     private void OnUpdateCubesQueue(Queue<Color> cubesQueue)

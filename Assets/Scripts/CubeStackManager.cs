@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class CubeStackManager : MonoBehaviour
 {
-    [SerializeField] private GameManager gameManager;
     [SerializeField] private MeshRenderer cubePrefab;
 
     private void Awake()
     {
-        this.gameManager.OnPlaceCube += PlaceCube;
+        Predictor.OnPlacingCube += PlaceCube;
     }
 
     private void Start()
@@ -19,26 +18,26 @@ public class CubeStackManager : MonoBehaviour
 
     void OnDestroy()
     {
-        this.gameManager.OnPlaceCube -= PlaceCube;
+        Predictor.OnPlacingCube -= PlaceCube;
     }
 
     private void SpawnFirstCubes()
     {
         List<Vector2> emptyLocations = GenerateLocations();
-        for(int i = 0; i < this.gameManager.colors.Length; i++)
+        for(int i = 0; i < GameManager.Instance.colors.Length; i++)
         {
             var location = PopRandomLocation(emptyLocations);
             var cube = Instantiate(this.cubePrefab, new Vector3(location.x, 0, location.y), Quaternion.identity, this.transform);
-            cube.material.color = this.gameManager.colors[i];
+            cube.material.color = GameManager.Instance.colors[i];
         }
     }
 
     private List<Vector2> GenerateLocations()
     {
         List<Vector2> emptyLocations = new List<Vector2>();
-        for (int i = 0; i < this.gameManager.boardSize; i++)
+        for (int i = 0; i < GameManager.Instance.boardSize; i++)
         {
-            for (int j = 0; j < this.gameManager.boardSize; j++)
+            for (int j = 0; j < GameManager.Instance.boardSize; j++)
             {
                 Vector2 newLocation = new Vector2(i, j);
                 emptyLocations.Add(newLocation);
