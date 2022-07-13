@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameEvents : MonoBehaviour
 {
+    public static Action<Vector3> OnPlacingCube;
+
     private void Update()
     {
         if (Input.GetMouseButtonUp(0))
@@ -14,7 +17,7 @@ public class GameEvents : MonoBehaviour
             {
                 if(hit.collider.CompareTag("Placeholder"))
                 {
-                    GameManager.Instance.OnClickPlaceholder(hit.transform.position);
+                    OnPlacingCube(hit.transform.position);
                 }
             }
         }

@@ -21,12 +21,18 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        GameEvents.OnPlacingCube += OnPlacingCube;
     }
 
     private void Start()
     {
         InitializeCubesQueue();
         OnUpdateCubesQueue(this.cubesQueue);
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.OnPlacingCube -= OnPlacingCube;
     }
 
     private void InitializeCubesQueue()
@@ -38,7 +44,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void OnClickPlaceholder(Vector3 placeholderPosition)
+    public void OnPlacingCube(Vector3 placeholderPosition)
     {
         Color nextCube = this.cubesQueue.Dequeue();
         AddCubeToQueue();
