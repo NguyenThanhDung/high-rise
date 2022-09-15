@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Predictor : MonoBehaviour
 {
+    public static Predictor Instance;
+
     private Queue<Color> cubesQueue;
 
     public static Action<Color, Vector3> OnPlacingCube;
@@ -12,18 +14,13 @@ public class Predictor : MonoBehaviour
 
     void Awake()
     {
-        GameEvents.OnClickingPlaceholder += OnClickingPlaceholder;
+        Instance = this;
     }
 
     void Start()
     {
         InitializeCubesQueue();
         OnUpdateCubesQueue(this.cubesQueue);
-    }
-
-    void OnDestroy()
-    {
-        GameEvents.OnClickingPlaceholder -= OnClickingPlaceholder;
     }
 
     private void InitializeCubesQueue()
@@ -42,11 +39,11 @@ public class Predictor : MonoBehaviour
         this.cubesQueue.Enqueue(color);
     }
 
-    public void OnClickingPlaceholder(Vector3 placeholderPosition)
+    public Color PopColor()
     {
         Color nextCube = this.cubesQueue.Dequeue();
         AddCubeToQueue();
-        OnPlacingCube(nextCube, placeholderPosition);
         OnUpdateCubesQueue(this.cubesQueue);
+        return nextCube;
     }
 }

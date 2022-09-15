@@ -6,19 +6,9 @@ public class CubeStackManager : MonoBehaviour
 {
     [SerializeField] private MeshRenderer cubePrefab;
 
-    private void Awake()
-    {
-        Predictor.OnPlacingCube += PlaceCube;
-    }
-
     private void Start()
     {
         SpawnFirstCubes();
-    }
-
-    void OnDestroy()
-    {
-        Predictor.OnPlacingCube -= PlaceCube;
     }
 
     private void SpawnFirstCubes()
@@ -52,11 +42,5 @@ public class CubeStackManager : MonoBehaviour
         var location = emptyLocations[index];
         emptyLocations.RemoveAt(index);
         return location;
-    }
-
-    private void PlaceCube(Color cubeColor, Vector3 position)
-    {
-        var cube = Instantiate(this.cubePrefab, position + Vector3.up * 0.5f, Quaternion.identity, this.transform);
-        cube.material.color = cubeColor;
     }
 }
