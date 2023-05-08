@@ -150,7 +150,7 @@
 											"top": 112,
 											"width": 119.57080078125,
 											"height": 13,
-											"text": "+OnPlacedColumn()",
+											"text": "+OnPuttingPillar()",
 											"horizontalAlignment": 0
 										}
 									],
@@ -345,7 +345,7 @@
 											"top": 88,
 											"width": 139.826171875,
 											"height": 13,
-											"text": "+MergeColumn()",
+											"text": "+MergePillar()",
 											"horizontalAlignment": 0
 										},
 										{
@@ -362,7 +362,7 @@
 											"top": 103,
 											"width": 139.826171875,
 											"height": 13,
-											"text": "+OnClick()",
+											"text": "+OnTap()",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4091,7 +4091,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEyI9masv5NQs="
 							},
-							"name": "OnPlacedColumn",
+							"name": "OnPuttingPillar",
 							"specification": "- Check if all slot were filled\n- Check all mergable columns. Merge one to another.\n- Ask ScoreManager to increase score."
 						}
 					]
@@ -4172,7 +4172,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEyI+mv8wkOyQ="
 							},
-							"name": "MergeColumn",
+							"name": "MergePillar",
 							"specification": "Merge from other column"
 						},
 						{
@@ -4181,7 +4181,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEyI+mv8wkOyQ="
 							},
-							"name": "OnClick",
+							"name": "OnTap",
 							"specification": "Call Board.CombineColumns() to check all combinable columns"
 						},
 						{

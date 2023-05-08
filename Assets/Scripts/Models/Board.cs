@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private BoardSlot[,] boardSlots;
+    private ScoreManager scoreManager;
+
+    void Awake()
     {
-        
+        this.boardSlots = new BoardSlot[GameManager.Instance.boardSize, GameManager.Instance.boardSize];
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnPutPillar()
     {
-        
+        Console.WriteLine("Putting pillar");
     }
 }

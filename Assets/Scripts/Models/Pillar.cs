@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Pillar : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private List<Cube> cubes;
 
-    // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        
+        this.cubes = new List<Cube>();
     }
 }
