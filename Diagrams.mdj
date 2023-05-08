@@ -787,7 +787,7 @@
 											"top": 320,
 											"width": 141.25439453125,
 											"height": 13,
-											"text": "+GenerateNewColumn()",
+											"text": "+GenerateNewPillar()",
 											"horizontalAlignment": 0
 										},
 										{
@@ -804,7 +804,7 @@
 											"top": 335,
 											"width": 141.25439453125,
 											"height": 13,
-											"text": "+PopColumn()",
+											"text": "+PopPillar()",
 											"horizontalAlignment": 0
 										}
 									],
@@ -913,7 +913,7 @@
 											"top": 295,
 											"width": 111.947265625,
 											"height": 13,
-											"text": "PredictingColumn"
+											"text": "PredictingPillar"
 										},
 										{
 											"_type": "LabelView",
@@ -1641,7 +1641,7 @@
 											"top": 79,
 											"width": 48.3818359375,
 											"height": 13,
-											"text": "Column"
+											"text": "Pillar"
 										},
 										{
 											"_type": "LabelView",
@@ -2093,7 +2093,7 @@
 											"top": 295,
 											"width": 107.62451171875,
 											"height": 13,
-											"text": "PredictedCube"
+											"text": "PredictingCube"
 										},
 										{
 											"_type": "LabelView",
@@ -2757,9 +2757,9 @@
 											"font": "Arial;13;1",
 											"left": 133,
 											"top": 79,
-											"width": 101.15625,
+											"width": 109.80810546875,
 											"height": 13,
-											"text": "CameraManager"
+											"text": "CameraController"
 										},
 										{
 											"_type": "LabelView",
@@ -2792,7 +2792,7 @@
 									"font": "Arial;13;0",
 									"left": 128,
 									"top": 72,
-									"width": 111.15625,
+									"width": 119.80810546875,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGEyJkRWeRXKeQ="
@@ -2819,7 +2819,7 @@
 									"font": "Arial;13;0",
 									"left": 128,
 									"top": 97,
-									"width": 111.15625,
+									"width": 119.80810546875,
 									"height": 10
 								},
 								{
@@ -2844,7 +2844,7 @@
 											"font": "Arial;13;0",
 											"left": 133,
 											"top": 112,
-											"width": 101.15625,
+											"width": 109.80810546875,
 											"height": 13,
 											"text": "+Rotate()",
 											"horizontalAlignment": 0
@@ -2853,7 +2853,7 @@
 									"font": "Arial;13;0",
 									"left": 128,
 									"top": 107,
-									"width": 111.15625,
+									"width": 119.80810546875,
 									"height": 23
 								},
 								{
@@ -2893,7 +2893,7 @@
 							"containerChangeable": true,
 							"left": 128,
 							"top": 72,
-							"width": 111.15625,
+							"width": 119.80810546875,
 							"height": 58,
 							"nameCompartment": {
 								"$ref": "AAAAAAGEyJkRWORWP7o="
@@ -2932,7 +2932,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 295,
+									"left": 299,
 									"top": 75,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -2953,7 +2953,7 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 295,
+									"left": 299,
 									"top": 60,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -2974,7 +2974,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 295,
+									"left": 299,
 									"top": 105,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -2995,7 +2995,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 263,
+									"left": 272,
 									"top": 75,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -3016,7 +3016,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 266,
+									"left": 275,
 									"top": 61,
 									"height": 13,
 									"alpha": 0.7853981633974483,
@@ -3036,7 +3036,7 @@
 										"$ref": "AAAAAAGEyJpVtPEymyU="
 									},
 									"font": "Arial;13;0",
-									"left": 256,
+									"left": 265,
 									"top": 102,
 									"width": 7.22998046875,
 									"height": 13,
@@ -3149,7 +3149,7 @@
 							"tail": {
 								"$ref": "AAAAAAGEyJkRWORVj5Q="
 							},
-							"points": "238:96;352:96",
+							"points": "247:96;352:96",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGEyJpVtfE2AGM="
@@ -4280,7 +4280,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEyJCwvsyFfDA="
 							},
-							"name": "GenerateNewColumn"
+							"name": "GenerateNewPillar"
 						},
 						{
 							"_type": "UMLOperation",
@@ -4288,7 +4288,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEyJCwvsyFfDA="
 							},
-							"name": "PopColumn"
+							"name": "PopPillar"
 						}
 					]
 				},
@@ -4298,7 +4298,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "PredictingColumn",
+					"name": "PredictingPillar",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -4338,7 +4338,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Column",
+					"name": "Pillar",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -4378,7 +4378,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "PredictedCube",
+					"name": "PredictingCube",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -4416,7 +4416,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "CameraManager",
+					"name": "CameraController",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
