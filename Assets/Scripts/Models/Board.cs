@@ -14,6 +14,6 @@ public class Board : MonoBehaviour
 
     private void OnPutPillar()
     {
-        Console.WriteLine("Putting pillar");
+        Debug.Log("Putting pillar");
     }
 }

@@ -8,21 +8,21 @@ public class BoardSlot : MonoBehaviour
 
     public void OnTap()
     {
-        Console.WriteLine("Tapping slot");
+        Debug.Log("Tapping slot");
     }
 
     public void Combine(BoardSlot other)
     {
-        Console.WriteLine("Combining with other pillars");
+        Debug.Log("Combining with other pillars");
     }
 
     public void MergePillars()
     {
-        Console.WriteLine("Merging pillars");
+        Debug.Log("Merging pillars");
     }
 
     public void Clear()
     {
-        Console.WriteLine("Clearing pillar");
+        Debug.Log("Clearing pillar");
     }
 }
