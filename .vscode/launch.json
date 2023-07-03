@@ -7,7 +7,7 @@
         {
             "name": "Unity Editor",
             "type": "unity",
-            "path": "/e:/Programming/high-rise/Library/EditorInstance.json",
+            "path": "/Users/thanhdung/Documents/high-rise/Library/EditorInstance.json",
             "request": "launch"
         },
         {

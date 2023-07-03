@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameEvents : MonoBehaviour
 {
     public static Action<Vector3> OnClickingPlaceholder;
+    public static Action<BoardSlot> OnClickingBoardSlot;
 
     private void Update()
     {
@@ -18,6 +19,7 @@ public class GameEvents : MonoBehaviour
                 if(hit.collider.CompareTag("Placeholder"))
                 {
                     OnClickingPlaceholder(hit.transform.position);
+                    OnClickingBoardSlot(hit.transform.gameObject.GetComponent<BoardSlot>());
                 }
             }
         }

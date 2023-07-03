@@ -9,10 +9,20 @@ public class Board : MonoBehaviour
 
     void Awake()
     {
+        GameEvents.OnClickingBoardSlot += OnPutPillar;
+    }
+
+    void Start()
+    {
         this.boardSlots = new BoardSlot[GameManager.Instance.boardSize, GameManager.Instance.boardSize];
     }
 
-    private void OnPutPillar()
+    void OnDestroy()
+    {
+        GameEvents.OnClickingBoardSlot -= OnPutPillar;
+    }
+
+    private void OnPutPillar(BoardSlot boardSlot)
     {
         Debug.Log("Putting pillar");
     }
