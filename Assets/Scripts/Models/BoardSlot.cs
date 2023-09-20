@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class BoardSlot : MonoBehaviour
 {
-    private Pillar pillar;
+    [SerializeField]
+    private Pillar pillarPrefab;
 
     public void OnTap()
     {
         Debug.Log("Tapping slot");
+        Instantiate(pillarPrefab, this.transform);
     }
 
     public void Combine(BoardSlot other)

@@ -111,3 +111,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92cd7987d44d54886bf3c48de6a9560f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pillarPrefab: {fileID: 7860654847677981080, guid: 77686907c16a348ae8d6ebc22daff450, type: 3}
