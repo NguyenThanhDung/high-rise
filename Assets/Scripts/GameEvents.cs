@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class GameEvents : MonoBehaviour
 {
-    public static Action<Vector3> OnClickingPlaceholder;
-
     private void Update()
     {
         if (Input.GetMouseButtonUp(0))
@@ -17,8 +15,6 @@ public class GameEvents : MonoBehaviour
             {
                 if (hit.collider.CompareTag("BoardSlot"))
                 {
-                    OnClickingPlaceholder(hit.transform.position);
-
                     BoardSlot boardSlot = hit.transform.gameObject.GetComponent<BoardSlot>();
                     boardSlot.OnTap();
                 }

@@ -7,20 +7,9 @@ public class BoardManager : MonoBehaviour
     [SerializeField] private GameObject placeholderPrefab;
     [SerializeField] private MeshRenderer cubePrefab;
 
-    void Awake()
-    {
-        GameEvents.OnClickingPlaceholder += PlaceCube;
-    }
-
-
     private void Start()
     {
         SpawnPlaceholders();
-    }
-
-    void OnDestroy()
-    {
-        GameEvents.OnClickingPlaceholder -= PlaceCube;
     }
 
     private void SpawnPlaceholders()
@@ -32,11 +21,5 @@ public class BoardManager : MonoBehaviour
                 Instantiate(this.placeholderPrefab, new Vector3(i, -0.5f, j), Quaternion.Euler(90, 0, 0));
             }
         }
-    }
-
-    private void PlaceCube(Vector3 position)
-    {
-        var cube = Instantiate(this.cubePrefab, position + Vector3.up * 0.5f, Quaternion.identity, this.transform);
-        cube.material.color = Predictor.Instance.PopColor();
     }
 }
