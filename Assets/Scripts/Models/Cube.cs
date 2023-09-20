@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class Cube : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private bool shouldSetColor = false;
+
+    public bool ShouldSetColor
     {
-        
+        get
+        {
+            return this.shouldSetColor;
+        }
+        set
+        {
+            this.shouldSetColor = value;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        if (ShouldSetColor)
+        {
+            StartCoroutine(SetColor());
+        }
+    }
+
+    private IEnumerator SetColor()
+    {
+        yield return 0;
+        var meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer.material.color = Predictor.Instance.PopColor();
     }
 }
