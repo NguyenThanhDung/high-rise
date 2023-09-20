@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5613690088783244393}
   m_Layer: 0
   m_Name: BoardSlot
-  m_TagString: Placeholder
+  m_TagString: BoardSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

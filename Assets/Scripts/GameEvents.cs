@@ -16,7 +16,7 @@ public class GameEvents : MonoBehaviour
             RaycastHit hit;
             if(Physics.Raycast (ray, out hit))
             {
-                if(hit.collider.CompareTag("Placeholder"))
+                if(hit.collider.CompareTag("BoardSlot"))
                 {
                     OnClickingPlaceholder(hit.transform.position);
                     OnClickingBoardSlot(hit.transform.gameObject.GetComponent<BoardSlot>());
