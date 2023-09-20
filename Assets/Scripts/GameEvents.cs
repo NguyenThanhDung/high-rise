@@ -6,7 +6,6 @@ using UnityEngine;
 public class GameEvents : MonoBehaviour
 {
     public static Action<Vector3> OnClickingPlaceholder;
-    public static Action<BoardSlot> OnClickingBoardSlot;
 
     private void Update()
     {
@@ -14,12 +13,14 @@ public class GameEvents : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if(Physics.Raycast (ray, out hit))
+            if (Physics.Raycast(ray, out hit))
             {
-                if(hit.collider.CompareTag("BoardSlot"))
+                if (hit.collider.CompareTag("BoardSlot"))
                 {
                     OnClickingPlaceholder(hit.transform.position);
-                    OnClickingBoardSlot(hit.transform.gameObject.GetComponent<BoardSlot>());
+
+                    BoardSlot boardSlot = hit.transform.gameObject.GetComponent<BoardSlot>();
+                    boardSlot.OnTap();
                 }
             }
         }
