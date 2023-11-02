@@ -8,9 +8,10 @@ public class Predictor : MonoBehaviour
     public static Predictor Instance;
 
     private Queue<Color> cubesQueue;
+    [SerializeField]
+    private PredictorBar _predictorBar;
 
     public static Action<Color, Vector3> OnPlacingCube;
-    public static Action<Queue<Color>> OnUpdateCubesQueue;
 
     void Awake()
     {
@@ -20,7 +21,7 @@ public class Predictor : MonoBehaviour
     void Start()
     {
         InitializeCubesQueue();
-        OnUpdateCubesQueue(this.cubesQueue);
+        _predictorBar.Refresh(this.cubesQueue);
     }
 
     private void InitializeCubesQueue()
@@ -43,7 +44,7 @@ public class Predictor : MonoBehaviour
     {
         Color nextCube = this.cubesQueue.Dequeue();
         AddCubeToQueue();
-        OnUpdateCubesQueue(this.cubesQueue);
+        _predictorBar.Refresh(this.cubesQueue);
         return nextCube;
     }
 }

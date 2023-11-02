@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1610507451618501994}
   - component: {fileID: 1610507451618501997}
   m_Layer: 5
-  m_Name: QueuedCube
+  m_Name: WaitingCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
