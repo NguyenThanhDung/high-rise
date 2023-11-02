@@ -12,6 +12,7 @@ public class Cube : MonoBehaviour
     private void SetColor()
     {
         var meshRenderer = GetComponent<MeshRenderer>();
-        meshRenderer.material.color = Predictor.Instance.PopColor();
+        var waitingPillar = Predictor.Instance.PopWaitingPillar();
+        meshRenderer.material.color = waitingPillar.Colors[0];
     }
 }

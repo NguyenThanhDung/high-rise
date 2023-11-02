@@ -7,7 +7,7 @@ public class Predictor : MonoBehaviour
 {
     public static Predictor Instance;
 
-    private Queue<Color> cubesQueue;
+    private Queue<WaitingPillar> _waitingPillars;
     [SerializeField]
     private PredictorBar _predictorBar;
 
@@ -20,31 +20,30 @@ public class Predictor : MonoBehaviour
 
     void Start()
     {
-        InitializeCubesQueue();
-        _predictorBar.Refresh(this.cubesQueue);
+        InitializeWaitingPillars();
+        _predictorBar.Refresh(this._waitingPillars);
     }
 
-    private void InitializeCubesQueue()
+    private void InitializeWaitingPillars()
     {
-        this.cubesQueue = new Queue<Color>();
+        _waitingPillars = new Queue<WaitingPillar>();
         for (int i = 0; i < GameManager.MAX_CUBES_QUEUE_SIZE; i++)
         {
-            AddCubeToQueue();
+            GenerateNewWaitingPillar();
         }
     }
 
-    private void AddCubeToQueue()
+    private void GenerateNewWaitingPillar()
     {
-        int colorIndex = UnityEngine.Random.Range(0, GameManager.MAX_CUBES_QUEUE_SIZE);
-        Color color = GameManager.Instance.colors[colorIndex];
-        this.cubesQueue.Enqueue(color);
+        WaitingPillar waitingPillar = new WaitingPillar();
+        _waitingPillars.Enqueue(waitingPillar);
     }
 
-    public Color PopColor()
+    public WaitingPillar PopWaitingPillar()
     {
-        Color nextCube = this.cubesQueue.Dequeue();
-        AddCubeToQueue();
-        _predictorBar.Refresh(this.cubesQueue);
-        return nextCube;
+        var waitingPillar = _waitingPillars.Dequeue();
+        GenerateNewWaitingPillar();
+        _predictorBar.Refresh(this._waitingPillars);
+        return waitingPillar;
     }
 }
