@@ -17,6 +17,5 @@ public class Pillar : MonoBehaviour
     void Start()
     {
         var cube = Instantiate(this.cubePrefab, this.transform.position + Vector3.up * 0.5f, Quaternion.identity, this.transform);
-        cube.ShouldSetColor = true;
     }
 }
