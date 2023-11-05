@@ -11,6 +11,7 @@ public class BoardSlot : MonoBehaviour
     {
         Debug.Log("Tapping slot");
         Instantiate(pillarPrefab, this.transform);
+        Board.Instance.OnPuttingPillar();
     }
 
     public void Combine(BoardSlot other)
