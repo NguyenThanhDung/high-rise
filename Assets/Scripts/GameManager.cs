@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     public const int MAX_CUBES_QUEUE_SIZE = 3;
 
     public int boardSize;
-    public Color[] colors;
 
     private void Awake()
     {

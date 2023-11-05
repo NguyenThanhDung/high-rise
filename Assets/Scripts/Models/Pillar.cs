@@ -7,11 +7,11 @@ public class Pillar : MonoBehaviour
     [SerializeField]
     private Cube cubePrefab;
 
-    private List<Cube> cubes;
+    private List<Cube> _cubes;
 
     void Awake()
     {
-        this.cubes = new List<Cube>();
+        _cubes = new List<Cube>();
     }
 
     void Start()

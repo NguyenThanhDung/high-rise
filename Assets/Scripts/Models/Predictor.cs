@@ -9,6 +9,8 @@ public class Predictor : MonoBehaviour
 
     private Queue<WaitingPillar> _waitingPillars;
     [SerializeField]
+    private Color[] _colors;
+    [SerializeField]
     private PredictorBar _predictorBar;
 
     public static Action<Color, Vector3> OnPlacingCube;
@@ -16,18 +18,18 @@ public class Predictor : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        InitializeWaitingPillars();
     }
 
     void Start()
     {
-        InitializeWaitingPillars();
         _predictorBar.Refresh(this._waitingPillars);
     }
 
     private void InitializeWaitingPillars()
     {
         _waitingPillars = new Queue<WaitingPillar>();
-        for (int i = 0; i < GameManager.MAX_CUBES_QUEUE_SIZE; i++)
+        for (int i = 0; i < GameManager.MAX_CUBES_QUEUE_SIZE + 3; i++)
         {
             GenerateNewWaitingPillar();
         }
@@ -35,7 +37,9 @@ public class Predictor : MonoBehaviour
 
     private void GenerateNewWaitingPillar()
     {
-        WaitingPillar waitingPillar = new WaitingPillar();
+        var colorIndex = UnityEngine.Random.Range(0, _colors.Length);
+        var color = _colors[colorIndex];
+        WaitingPillar waitingPillar = new WaitingPillar(color);
         _waitingPillars.Enqueue(waitingPillar);
     }
 

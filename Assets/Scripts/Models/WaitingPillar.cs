@@ -8,16 +8,9 @@ public class WaitingPillar
 
     public List<Color> Colors { get => _colors; private set => _colors = value; }
 
-    public WaitingPillar()
+    public WaitingPillar(Color color)
     {
         Colors = new List<Color>();
-        GenerateColor();
-    }
-
-    private void GenerateColor()
-    {
-        int colorIndex = Random.Range(0, GameManager.MAX_CUBES_QUEUE_SIZE);
-        Color color = GameManager.Instance.colors[colorIndex];
         Colors.Add(color);
     }
 }

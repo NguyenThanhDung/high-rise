@@ -23,6 +23,11 @@ public class BoardSlot : MonoBehaviour
         _localtion[1] = col;
     }
 
+    public void GenerateFirstPillar()
+    {
+        Instantiate(_pillarPrefab, this.transform);
+    }
+
     public void OnTap()
     {
         Debug.Log("Tapping slot");
