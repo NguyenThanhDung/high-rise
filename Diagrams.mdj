@@ -256,7 +256,7 @@
 											"font": "Arial;13;1",
 											"left": 589,
 											"top": 55,
-											"width": 139.826171875,
+											"width": 144.85986328125,
 											"height": 13,
 											"text": "BoardSlot"
 										},
@@ -291,7 +291,7 @@
 									"font": "Arial;13;0",
 									"left": 584,
 									"top": 48,
-									"width": 149.826171875,
+									"width": 154.85986328125,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGEyI+mwMwonqE="
@@ -318,7 +318,7 @@
 									"font": "Arial;13;0",
 									"left": 584,
 									"top": 73,
-									"width": 149.826171875,
+									"width": 154.85986328125,
 									"height": 10
 								},
 								{
@@ -343,9 +343,9 @@
 											"font": "Arial;13;0",
 											"left": 589,
 											"top": 88,
-											"width": 139.826171875,
+											"width": 144.85986328125,
 											"height": 13,
-											"text": "+MergePillar()",
+											"text": "+Consume(BoardSlot[])()",
 											"horizontalAlignment": 0
 										},
 										{
@@ -360,7 +360,7 @@
 											"font": "Arial;13;0",
 											"left": 589,
 											"top": 103,
-											"width": 139.826171875,
+											"width": 144.85986328125,
 											"height": 13,
 											"text": "+OnTap()",
 											"horizontalAlignment": 0
@@ -377,9 +377,9 @@
 											"font": "Arial;13;0",
 											"left": 589,
 											"top": 118,
-											"width": 139.826171875,
+											"width": 144.85986328125,
 											"height": 13,
-											"text": "+Combine(BoardSlot)()",
+											"text": "+Consume(BoardSlot)()",
 											"horizontalAlignment": 0
 										},
 										{
@@ -394,7 +394,7 @@
 											"font": "Arial;13;0",
 											"left": 589,
 											"top": 133,
-											"width": 139.826171875,
+											"width": 144.85986328125,
 											"height": 13,
 											"text": "+Clear()",
 											"horizontalAlignment": 0
@@ -403,7 +403,7 @@
 									"font": "Arial;13;0",
 									"left": 584,
 									"top": 83,
-									"width": 149.826171875,
+									"width": 154.85986328125,
 									"height": 68
 								},
 								{
@@ -443,7 +443,7 @@
 							"containerChangeable": true,
 							"left": 584,
 							"top": 48,
-							"width": 149.826171875,
+							"width": 154.85986328125,
 							"height": 103,
 							"nameCompartment": {
 								"$ref": "AAAAAAGEyI+mwMwnyF8="
@@ -2480,7 +2480,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 785,
+									"left": 788,
 									"top": 75,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -2501,7 +2501,7 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 785,
+									"left": 788,
 									"top": 60,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -2522,7 +2522,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 786,
+									"left": 789,
 									"top": 104,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -2543,7 +2543,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 759,
+									"left": 764,
 									"top": 75,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -2564,7 +2564,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 761,
+									"left": 766,
 									"top": 62,
 									"height": 13,
 									"alpha": 0.7853981633974483,
@@ -2584,7 +2584,7 @@
 										"$ref": "AAAAAAGEyJ4PGRFQKkM="
 									},
 									"font": "Arial;13;0",
-									"left": 752,
+									"left": 757,
 									"top": 103,
 									"width": 7.22998046875,
 									"height": 13,
@@ -2698,7 +2698,7 @@
 								"$ref": "AAAAAAGEyI+mv8wmjFw="
 							},
 							"lineStyle": 1,
-							"points": "734:97;839:95",
+							"points": "739:97;839:95",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGEyJ4PGhFUY3g="
@@ -4348,8 +4348,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGEyI+mv8wkOyQ="
 							},
-							"name": "MergePillar",
-							"specification": "Merge from other column"
+							"name": "Consume(BoardSlot[])",
+							"specification": "Consume list of other slots"
 						},
 						{
 							"_type": "UMLOperation",
@@ -4366,9 +4366,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGEyI+mv8wkOyQ="
 							},
-							"name": "Combine(BoardSlot)",
+							"name": "Consume(BoardSlot)",
 							"stereotype": "",
-							"specification": "Combine "
+							"specification": "Consume another slot"
 						},
 						{
 							"_type": "UMLOperation",
