@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,9 +9,12 @@ public class BoardSlot : MonoBehaviour
     private Pillar _pillarPrefab;
 
     private int[] _localtion;
+    private Pillar _pillar;
 
     public int Row { get { return _localtion[0]; } }
     public int Column { get { return _localtion[1]; } }
+    public bool HasPillar { get { return _pillar != null; } }
+    public Pillar Pillar { get { return _pillar; } }
 
     void Awake()
     {
@@ -25,24 +29,27 @@ public class BoardSlot : MonoBehaviour
 
     public void GenerateFirstPillar()
     {
-        Instantiate(_pillarPrefab, this.transform);
+        _pillar = Instantiate(_pillarPrefab, this.transform);
     }
 
     public void OnTap()
     {
         Debug.Log("Tapping slot");
-        Instantiate(_pillarPrefab, this.transform);
+        _pillar = Instantiate(_pillarPrefab, this.transform);
         Board.Instance.OnPuttingPillar(this);
     }
 
-    public void Combine(BoardSlot other)
+    public void Consume(BoardSlot other)
     {
-        Debug.Log("Combining with other pillars");
+        Debug.Log($"Consume pillar ({other.Row},{other.Column})");
     }
 
-    public void MergePillars()
+    public void Consume(List<BoardSlot> others)
     {
-        Debug.Log("Merging pillars");
+        String log = "Consume pillars: ";
+        foreach (var boardSlot in others)
+            log += "(" + boardSlot.Row + "," + boardSlot.Column + ")";
+        Debug.Log(log);
     }
 
     public void Clear()

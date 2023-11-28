@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Cube : MonoBehaviour
 {
+    private Color _color;
+
+    public Color CubeColor { get { return _color; } }
+
     void Start()
     {
         SetColor();
@@ -13,6 +17,7 @@ public class Cube : MonoBehaviour
     {
         var meshRenderer = GetComponent<MeshRenderer>();
         var waitingPillar = Predictor.Instance.PopWaitingPillar();
-        meshRenderer.material.color = waitingPillar.Colors[0];
+        _color = waitingPillar.Colors[0];
+        meshRenderer.material.color = _color;
     }
 }

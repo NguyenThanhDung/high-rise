@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -73,8 +74,53 @@ public class Board : MonoBehaviour
         return location;
     }
 
+    private List<BoardSlot> GetNeighbors(BoardSlot currentBoardSlot)
+    {
+        int row = currentBoardSlot.Row;
+        int col = currentBoardSlot.Column;
+        List<BoardSlot> neighbors = new List<BoardSlot>();
+        if (currentBoardSlot.Row > 0)
+            neighbors.Add(_boardSlots[row - 1, col]);
+        if (currentBoardSlot.Row < _boardSlots.GetLength(0) - 1)
+            neighbors.Add(_boardSlots[row + 1, col]);
+        if (currentBoardSlot.Column > 0)
+            neighbors.Add(_boardSlots[row, col - 1]);
+        if (currentBoardSlot.Column < _boardSlots.GetLength(1) - 1)
+            neighbors.Add(_boardSlots[row, col + 1]);
+        return neighbors;
+    }
+
+    private IEnumerator Merge(BoardSlot currentBoardSlot)
+    {
+        yield return null;
+        Debug.Log($"Board.OnPuttingPillar() location:({currentBoardSlot.Row}, {currentBoardSlot.Column})");
+        List<BoardSlot> neighbors = GetNeighbors(currentBoardSlot);
+
+        List<BoardSlot> sameColorNeighbors = new List<BoardSlot>();
+        foreach (var neighbor in neighbors)
+        {
+            if (neighbor.HasPillar)
+            {
+                Color neighborColor = neighbor.Pillar.BottomColor;
+                if (currentBoardSlot.Pillar.BottomColor == neighborColor)
+                {
+                    sameColorNeighbors.Add(neighbor);
+                }
+            }
+        }
+
+        if (sameColorNeighbors.Count == 1)
+        {
+            sameColorNeighbors[0].Consume(currentBoardSlot);
+        }
+        else if (sameColorNeighbors.Count > 1)
+        {
+            currentBoardSlot.Consume(sameColorNeighbors);
+        }
+    }
+
     public void OnPuttingPillar(BoardSlot boardSlot)
     {
-        Debug.Log($"Board.OnPuttingPillar() location:({boardSlot.Row}, {boardSlot.Column})");
+        StartCoroutine(Merge(boardSlot));
     }
 }
