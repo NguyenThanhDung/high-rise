@@ -29,7 +29,7 @@ public class Predictor : MonoBehaviour
     private void InitializeWaitingPillars()
     {
         _waitingPillars = new Queue<WaitingPillar>();
-        for (int i = 0; i < GameManager.MAX_CUBES_QUEUE_SIZE + 3; i++)
+        for (int i = 0; i < GameManager.MAX_CUBES_QUEUE_SIZE; i++)
         {
             GenerateNewWaitingPillar();
         }
