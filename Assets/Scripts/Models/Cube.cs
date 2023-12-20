@@ -8,16 +8,10 @@ public class Cube : MonoBehaviour
 
     public Color CubeColor { get { return _color; } }
 
-    void Start()
+    public void SetColor(Color color)
     {
-        SetColor();
-    }
-
-    private void SetColor()
-    {
+        _color = color;
         var meshRenderer = GetComponent<MeshRenderer>();
-        var waitingPillar = Predictor.Instance.PopWaitingPillar();
-        _color = waitingPillar.Colors[0];
         meshRenderer.material.color = _color;
     }
 }

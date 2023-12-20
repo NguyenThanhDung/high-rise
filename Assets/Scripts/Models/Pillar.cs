@@ -35,6 +35,9 @@ public class Pillar : MonoBehaviour
     void Start()
     {
         var cube = Instantiate(this.cubePrefab, this.transform.position + Vector3.up * 0.5f, Quaternion.identity, this.transform);
+        var waitingPillar = Predictor.Instance.PopWaitingPillar();
+        Color color = waitingPillar.Colors[0];
+        cube.SetColor(color);
         _cubes.Add(cube);
     }
 
@@ -44,6 +47,7 @@ public class Pillar : MonoBehaviour
         {
             Vector3 position = this.transform.position + Vector3.up * (_cubes.Count + 0.5f);
             var cube = Instantiate(this.cubePrefab, position, Quaternion.identity, this.transform);
+            cube.SetColor(BottomColor);
             _cubes.Add(cube);
         }
     }
