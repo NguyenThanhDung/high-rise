@@ -30,12 +30,15 @@ public class BoardSlot : MonoBehaviour
     public void GenerateFirstPillar()
     {
         _pillar = Instantiate(_pillarPrefab, this.transform);
+        _pillar.AddNewCube();
     }
 
     public void OnTap()
     {
         Debug.Log("Tapping slot");
-        _pillar = Instantiate(_pillarPrefab, this.transform);
+        if (_pillar == null)
+            _pillar = Instantiate(_pillarPrefab, this.transform);
+        _pillar.AddNewCube();
         Board.Instance.OnPuttingPillar(this);
     }
 
@@ -43,7 +46,7 @@ public class BoardSlot : MonoBehaviour
     {
         Debug.Log($"Consume pillar ({other.Row},{other.Column})");
         var count = other.Pillar.Height;
-        this.Pillar.AddCubes(count);
+        this.Pillar.AddConsumedCubes(count);
         other.Pillar.Clear();
     }
 

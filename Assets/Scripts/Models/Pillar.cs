@@ -32,7 +32,7 @@ public class Pillar : MonoBehaviour
         _cubes = new List<Cube>();
     }
 
-    void Start()
+    public void AddNewCube()
     {
         var cube = Instantiate(this.cubePrefab, this.transform.position + Vector3.up * 0.5f, Quaternion.identity, this.transform);
         var waitingPillar = Predictor.Instance.PopWaitingPillar();
@@ -41,7 +41,7 @@ public class Pillar : MonoBehaviour
         _cubes.Add(cube);
     }
 
-    public void AddCubes(int count)
+    public void AddConsumedCubes(int count)
     {
         for (int i = 0; i < count; i++)
         {
