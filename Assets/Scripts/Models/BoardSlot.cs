@@ -42,6 +42,9 @@ public class BoardSlot : MonoBehaviour
     public void Consume(BoardSlot other)
     {
         Debug.Log($"Consume pillar ({other.Row},{other.Column})");
+        var count = other.Pillar.Height;
+        this.Pillar.AddCubes(count);
+        other.Pillar.Clear();
     }
 
     public void Consume(List<BoardSlot> others)
