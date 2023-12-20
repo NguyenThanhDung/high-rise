@@ -49,9 +49,12 @@ public class BoardSlot : MonoBehaviour
 
     public void Consume(List<BoardSlot> others)
     {
-        String log = "Consume pillars: ";
+        String log = "Consumed pillars: ";
         foreach (var boardSlot in others)
+        {
             log += "(" + boardSlot.Row + "," + boardSlot.Column + ")";
+            Consume(boardSlot);
+        }
         Debug.Log(log);
     }
 
