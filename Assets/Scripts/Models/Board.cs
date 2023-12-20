@@ -96,26 +96,26 @@ public class Board : MonoBehaviour
         Debug.Log($"Board.OnPuttingPillar() location:({currentBoardSlot.Row}, {currentBoardSlot.Column})");
         List<BoardSlot> neighbors = GetNeighbors(currentBoardSlot);
 
-        List<BoardSlot> sameColorNeighbors = new List<BoardSlot>();
+        List<BoardSlot> mergableNeighbors = new List<BoardSlot>();
         foreach (var neighbor in neighbors)
         {
             if (neighbor.HasPillar)
             {
-                Color neighborColor = neighbor.Pillar.BottomColor;
-                if (currentBoardSlot.Pillar.BottomColor == neighborColor)
+                if (currentBoardSlot.Pillar.BottomColor == neighbor.Pillar.BottomColor
+                    && currentBoardSlot.Pillar.Height == neighbor.Pillar.Height)
                 {
-                    sameColorNeighbors.Add(neighbor);
+                    mergableNeighbors.Add(neighbor);
                 }
             }
         }
 
-        if (sameColorNeighbors.Count == 1)
+        if (mergableNeighbors.Count == 1)
         {
-            sameColorNeighbors[0].Consume(currentBoardSlot);
+            mergableNeighbors[0].Consume(currentBoardSlot);
         }
-        else if (sameColorNeighbors.Count > 1)
+        else if (mergableNeighbors.Count > 1)
         {
-            currentBoardSlot.Consume(sameColorNeighbors);
+            currentBoardSlot.Consume(mergableNeighbors);
         }
     }
 
