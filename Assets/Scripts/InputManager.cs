@@ -4,9 +4,22 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    public static InputManager Instance { get; private set; }
+
+    private bool _isEnable;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+            Destroy(this);
+        else
+            Instance = this;
+        _isEnable = true;
+    }
+
     private void Update()
     {
-        if (Input.GetMouseButtonUp(0))
+        if (_isEnable && Input.GetMouseButtonUp(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -16,8 +29,19 @@ public class InputManager : MonoBehaviour
                 {
                     BoardSlot boardSlot = hit.transform.gameObject.GetComponent<BoardSlot>();
                     boardSlot.OnTap();
+                    _isEnable = false;
                 }
             }
         }
+    }
+
+    public void Enable()
+    {
+        _isEnable = true;
+    }
+
+    public void Disable()
+    {
+        _isEnable = false;
     }
 }

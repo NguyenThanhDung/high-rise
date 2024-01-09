@@ -92,7 +92,7 @@ public class Board : MonoBehaviour
 
     private IEnumerator Merge(BoardSlot currentBoardSlot)
     {
-        yield return null;
+        yield return new WaitForSeconds(1f);
         Debug.Log($"Board.OnPuttingPillar() location:({currentBoardSlot.Row}, {currentBoardSlot.Column})");
         List<BoardSlot> neighbors = GetNeighbors(currentBoardSlot);
 
@@ -117,6 +117,7 @@ public class Board : MonoBehaviour
         {
             currentBoardSlot.Consume(mergableNeighbors);
         }
+        InputManager.Instance.Enable();
     }
 
     public void OnPuttingPillar(BoardSlot boardSlot)
