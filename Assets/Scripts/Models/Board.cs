@@ -92,30 +92,38 @@ public class Board : MonoBehaviour
 
     private IEnumerator Merge(BoardSlot currentBoardSlot)
     {
-        yield return new WaitForSeconds(1f);
-        Debug.Log($"Board.OnPuttingPillar() location:({currentBoardSlot.Row}, {currentBoardSlot.Column})");
-        List<BoardSlot> neighbors = GetNeighbors(currentBoardSlot);
-
-        List<BoardSlot> mergableNeighbors = new List<BoardSlot>();
-        foreach (var neighbor in neighbors)
+        while (currentBoardSlot != null)
         {
-            if (neighbor.HasPillar)
+            yield return new WaitForSeconds(1f);
+            Debug.Log($"Board.OnPuttingPillar() location:({currentBoardSlot.Row}, {currentBoardSlot.Column})");
+            List<BoardSlot> neighbors = GetNeighbors(currentBoardSlot);
+
+            List<BoardSlot> mergableNeighbors = new List<BoardSlot>();
+            foreach (var neighbor in neighbors)
             {
-                if (currentBoardSlot.Pillar.BottomColor == neighbor.Pillar.BottomColor
-                    && currentBoardSlot.Pillar.Height == neighbor.Pillar.Height)
+                if (neighbor.HasPillar)
                 {
-                    mergableNeighbors.Add(neighbor);
+                    if (currentBoardSlot.Pillar.BottomColor == neighbor.Pillar.BottomColor
+                        && currentBoardSlot.Pillar.Height == neighbor.Pillar.Height)
+                    {
+                        mergableNeighbors.Add(neighbor);
+                    }
                 }
             }
-        }
 
-        if (mergableNeighbors.Count == 1)
-        {
-            mergableNeighbors[0].Consume(currentBoardSlot);
-        }
-        else if (mergableNeighbors.Count > 1)
-        {
-            currentBoardSlot.Consume(mergableNeighbors);
+            if (mergableNeighbors.Count == 1)
+            {
+                mergableNeighbors[0].Consume(currentBoardSlot);
+                currentBoardSlot = mergableNeighbors[0];
+            }
+            else if (mergableNeighbors.Count > 1)
+            {
+                currentBoardSlot.Consume(mergableNeighbors);
+            }
+            else
+            {
+                currentBoardSlot = null;
+            }
         }
         InputManager.Instance.Enable();
     }
