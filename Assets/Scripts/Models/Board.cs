@@ -33,7 +33,7 @@ public class Board : MonoBehaviour
         {
             for (int j = 0; j < GameManager.Instance.boardSize; j++)
             {
-                var boardSlotObj = Instantiate(this.boardSlotPrefab, new Vector3(i, -0.5f, j), Quaternion.Euler(90, 0, 0));
+                var boardSlotObj = Instantiate(this.boardSlotPrefab, new Vector3(i, -0.5f, j), Quaternion.Euler(90, 0, 0), transform);
                 var boardSlot = boardSlotObj.GetComponent<BoardSlot>();
                 boardSlot.SetLocation(i, j);
                 _boardSlots[i, j] = boardSlot;
