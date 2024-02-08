@@ -7,6 +7,7 @@ public class InputManager : MonoBehaviour
     public static InputManager Instance { get; private set; }
 
     private bool _isEnable;
+    private BoardSlot _hittedBoardSlot;
 
     private void Awake()
     {
@@ -19,18 +20,37 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (_isEnable && Input.GetMouseButtonUp(0))
+        if (_isEnable)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if (Input.GetMouseButtonDown(0))
             {
-                if (hit.collider.CompareTag("BoardSlot"))
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit))
                 {
-                    BoardSlot boardSlot = hit.transform.gameObject.GetComponent<BoardSlot>();
-                    boardSlot.OnTap();
-                    _isEnable = false;
+                    if (hit.collider.CompareTag("BoardSlot"))
+                    {
+                        _hittedBoardSlot = hit.transform.gameObject.GetComponent<BoardSlot>();
+                    }
                 }
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit))
+                {
+                    if (hit.collider.CompareTag("BoardSlot"))
+                    {
+                        BoardSlot boardSlot = hit.transform.gameObject.GetComponent<BoardSlot>();
+                        if (boardSlot == _hittedBoardSlot)
+                        {
+                            boardSlot.OnTap();
+                            _isEnable = false;
+                        }
+                    }
+                }
+                _hittedBoardSlot = null;
             }
         }
     }
